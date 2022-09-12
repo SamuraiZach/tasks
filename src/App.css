@@ -28,17 +28,23 @@
 .Col1 {
     width: 100%;
     background-color: #2a8613;
-    height: 50px;
+    height: 100px;
 }
 
 .Col2 {
     width: 100%;
     background-color: #b5e0aa;
-    height: 50px;
+    height: 100px;
 }
 
 .App-link {
     color: #61dafb;
+}
+
+#rectangle {
+    width: 100px;
+    height: 50px;
+    background-color: red;
 }
 
 @keyframes App-logo-spin {
