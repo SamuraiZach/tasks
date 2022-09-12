@@ -30,11 +30,13 @@ function App(): JSX.Element {
                     <Col>
                         <div className="Col1">
                             <p>FIRST COLUMN</p>
+                            <div id="rectangle"></div>
                         </div>
                     </Col>
                     <Col>
                         <div className="Col2">
                             <p>SECOND COLUMN</p>
+                            <div id="rectangle"></div>
                         </div>
                     </Col>
                 </Row>
