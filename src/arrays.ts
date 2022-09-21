@@ -11,7 +11,9 @@ export function bookEndList(numbers: number[]): number[] {
         const arrayFE1 = [...numbers, ...numbers];
         return arrayFE1;
     } else {
-        const arrayFE2 = [numbers.at(0), numbers.at(-1)];
+        const x = numbers.at(0) as number;
+        const y = numbers.at(-1) as number;
+        const arrayFE2 = [x, y];
         return arrayFE2;
     }
 }
