@@ -7,6 +7,10 @@ import { StartAttempt } from "./components/StartAttempt";
 import { TwoDice } from "./components/TwoDice";
 import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ShoveBox } from "./bad-components/ShoveBox";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
 
 function App(): JSX.Element {
     return (
@@ -15,7 +19,7 @@ function App(): JSX.Element {
                 UD CISC275 with React Hooks and TypeScript (Zachariah Barraza /
                 SamuraiZach)
             </header>
-            <h1>Header :)</h1>
+            <h1>Header</h1>
             <img
                 src="https://www.rainforest-alliance.org/wp-content/uploads/2021/06/capybara-square-1.jpg.optimal.jpg"
                 alt="HUGE CAPYBARA STARING AT YOU"
@@ -24,6 +28,7 @@ function App(): JSX.Element {
                 <li>Capybaras are cool as heck</li>
                 <li>Capybaras are big ginuea pigs</li>
                 <li>Capybaras are cool forver</li>
+                <li>TEST</li>
             </ol>
             <p>
                 <code>Zachariah Barraza SamuraiZach Hello World</code>
@@ -48,16 +53,24 @@ function App(): JSX.Element {
                 </Row>
             </Container>
             <hr></hr>
+            <DoubleHalf></DoubleHalf>
+            <hr></hr>
+            <ChooseTeam></ChooseTeam>
+            <hr></hr>
+            <ColoredBox></ColoredBox>
+            <hr></hr>
+            <ShoveBox></ShoveBox>
+            <hr></hr>
             <Counter></Counter>
-            <hr />
+            <hr></hr>
             <RevealAnswer></RevealAnswer>
-            <hr />
+            <hr></hr>
             <StartAttempt></StartAttempt>
-            <hr />
+            <hr></hr>
             <TwoDice></TwoDice>
-            <hr />
+            <hr></hr>
             <ChangeType></ChangeType>
-            <hr />
+            <hr></hr>
             <CycleHoliday></CycleHoliday>
         </div>
     );
