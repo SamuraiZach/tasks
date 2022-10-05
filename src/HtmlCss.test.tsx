@@ -6,8 +6,9 @@ import userEvent from "@testing-library/user-event";
 describe("Some HTML Elements are added.", () => {
     test("There is a header", () => {
         render(<App />);
-        const header = screen.getByRole("heading");
-        expect(header).toBeInTheDocument();
+        const header = screen.queryAllByRole("heading");
+        //console.log(header);
+        expect(header.length).toBeGreaterThanOrEqual(3);
     });
 
     test("There is an image with alt text", () => {
@@ -21,6 +22,7 @@ describe("Some HTML Elements are added.", () => {
         render(<App />);
         const list = screen.getByRole("list");
         expect(list).toBeInTheDocument();
+        //console.log(list.children.length);
         expect(list.children.length).toBeGreaterThanOrEqual(3);
     });
 });
