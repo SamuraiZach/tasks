@@ -59,6 +59,7 @@ function App(): JSX.Element {
             </Container>
             <hr></hr>
             <DoubleHalf></DoubleHalf>
+            <hr></hr>
             <CheckAnswer expectedAnswer="42"></CheckAnswer>
             <hr></hr>
             <GiveAttempts></GiveAttempts>
