@@ -4,7 +4,7 @@ import { Question } from "../interfaces/question";
 import { Quiz } from "../interfaces/quiz";
 
 import "./QuizExpanded.css";
-import { QuizQuestion } from "./quizzer/QuizQuestion";
+import { QuizQuestion } from "./QuizQuestion";
 
 export const QuizExpanded = ({ quiz, editQuiz, resetView, switchEdit }: {}) => {
     const filteredQuestions = quiz.questionList.filter(
