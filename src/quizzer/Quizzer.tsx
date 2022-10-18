@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Quiz } from "../interfaces/quiz";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question, QuestionType } from "../interfaces/questionQuiz";
 import { QuizList } from "./QuizList";
 import { AddQuizModal } from "./AddQuizModal";
 
@@ -26,12 +26,21 @@ export const Quizzer = () => {
 
     function editQuiz(qId: number, newQuiz: Quiz) {
         setQuizzes(
-            quizzes.map((q: Quiz): Quiz => (q.id === qId ? newQuiz : q))
+            quizzes.map((q: Quiz): Quiz => (q.id === qId ? { ...newQuiz } : q))
         );
     }
 
     function addQuiz(title: string, body: string) {
-        setQuizzes([...quizzes, newQuiz]);
+        setQuizzes([
+            ...quizzes,
+            {
+                id: quizzes.length + 1,
+                title: title,
+                body: body,
+                published: true,
+                questionList: []
+            }
+        ]);
     }
 
     function deleteQuiz(qId: number) {

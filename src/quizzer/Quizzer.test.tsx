@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Quiz } from "../interfaces/quiz";
-import { Question, QuestionType } from "../interfaces/question";
+import { Question, QuestionType } from "../interfaces/questionQuiz";
 import { Quizzer } from "./Quizzer";
 import userEvent from "@testing-library/user-event";
 import sample from "../data/quizzes.json";
@@ -169,7 +169,15 @@ describe("Quizzer Tests", () => {
         expect(screen.queryByText("Simple_Questions")).not.toBeInTheDocument();
     });
 
-    test("Users can delete an existing quiz question", () => {});
+    test("Users can delete an existing quiz question", () => {
+        const text = screen.getByText("Simple_Questions");
+        text.click();
+        const editButton = screen.getByText("Edit");
+        editButton.click();
+        const deleteButton = screen.getAllByText("Delete")[0];
+        deleteButton.click();
+        expect(screen.queryByText("What is 2+2?")).not.toBeInTheDocument();
+    });
 
     test("Users can add a new quiz question", () => {
         const text = screen.getByText("Simple_Questions");
@@ -197,7 +205,17 @@ describe("Quizzer Tests", () => {
         ).toBeInTheDocument();
     });
 
-    test("Users can edit the questions and fields of a quiz", () => {});
+    test("Users can edit the questions and fields of a quiz", () => {
+        const text = screen.getByText("Simple_Questions");
+        text.click();
+        const editButton = screen.getByText("Edit");
+        editButton.click();
+        const pubButton = screen.getAllByText("Published")[0];
+        pubButton.click();
+        const saveButton = screen.getByText("Save");
+        saveButton.click();
+        expect(screen.queryByText("What is 2+2?")).not.toBeInTheDocument();
+    });
 
     test("Users can reorder quiz questions", () => {
         const text = screen.getByText("Simple_Questions");

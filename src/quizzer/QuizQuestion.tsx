@@ -1,5 +1,5 @@
 import React from "react";
-import { Question } from "../interfaces/question";
+import { Question } from "../interfaces/questionQuiz";
 import { Form, Button } from "react-bootstrap";
 
 import "./QuizQuestion.css";
@@ -12,7 +12,14 @@ export const QuizQuestion = ({
     handleSubmit,
     addPoints,
     editQuestionSub
-}: {}) => {
+}: {
+    index: number;
+    question: Question;
+    submitted: boolean;
+    handleSubmit: (index: number) => void;
+    addPoints: (p: number) => void;
+    editQuestionSub: (id: number, sub: string) => void;
+}) => {
     const handleClick = (e: ChangeEvent) => {
         if (!submitted) {
             editQuestionSub(question.id, e.target.value);
@@ -37,7 +44,8 @@ export const QuizQuestion = ({
                     <h4>
                         {question.points} pt{question.points !== 1 ? "s" : ""}
                     </h4>
-                </div>f
+                </div>
+                f
                 <div className="answer_box">
                     {question.type === "short_answer_question" && (
                         <Form.Group controlId="formShortAnswerBox">
@@ -53,7 +61,7 @@ export const QuizQuestion = ({
                             {question.options.map(
                                 (option: string, i: number) => (
                                     <Form.Check
-                                        type=""
+                                        type="checkbox"
                                         name={"questionChoice" + index}
                                         key={option + " | " + i}
                                         label={option}

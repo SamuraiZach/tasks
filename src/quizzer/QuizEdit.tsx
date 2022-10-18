@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Question } from "../interfaces/question";
+import { Question } from "../interfaces/questionQuiz";
 import { Quiz } from "../interfaces/quiz";
 import { QuestionEdit } from "./QuestionEdit";
 
@@ -12,13 +12,21 @@ export const QuizEdit = ({
     deleteQuiz,
     switchEdit,
     resetView
-}: {) => {
+}: {
+    quiz: Quiz;
+    editQuiz: (qId: number, newQuiz: Quiz) => void;
+    deleteQuiz: (qId: number) => void;
+    switchEdit: () => void;
+    resetView: () => void;
+}) => {
     const [newQuiz, setNewQuiz] = useState<Quiz>({ ...quiz });
 
     const editQuestion = (questionId: number, newQuestion: Question) => {
         setNewQuiz({
             ...newQuiz,
             questionList: newQuiz.questionList.map(
+                (q: Question): Question =>
+                    q.id === questionId ? { ...newQuestion } : q
             )
         });
     };
@@ -27,22 +35,27 @@ export const QuizEdit = ({
         setNewQuiz({
             ...newQuiz,
             questionList: newQuiz.questionList.filter(
+                (q: Question): boolean => q.id !== questionId
             )
         });
     };
 
     const saveChanges = () => {
-        editQuiz(quiz.id, { ...newQuiz });
+        editQuiz(newQuiz.id, { ...newQuiz });
     };
 
     const swapQuestion = (idx1: number, idx2: number) => {
+        //const indx1 = newQuiz.questionList.find((q: Question): Question => q.id === idx1 ? q : null);
+        //const indx2 = newQuiz.questionList.findIndex((q: Question): boolean => q.id === idx2);
+        //const copiedSet = {...newQuiz, questionList:[...newQuiz.questionList]};
+
         setNewQuiz({
             ...newQuiz,
             questionList: newQuiz.questionList.map(
                 (q: Question, idx: number): Question => {
                     if (idx === idx1) return newQuiz.questionList[idx2];
                     if (idx === idx2) return newQuiz.questionList[idx1];
-                    return;
+                    return q;
                 }
             )
         });
@@ -79,7 +92,7 @@ export const QuizEdit = ({
                             ) => {
                                 setNewQuiz({
                                     ...newQuiz,
-                                    published: 
+                                    published: e.target.checked
                                 });
                             }}
                         ></Form.Check>
